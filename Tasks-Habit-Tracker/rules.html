@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rules | Task & Habit Tracker</title>
+  <link rel="stylesheet" href="./assets/css/rules.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="top-header">
+      <div>
+        <h1>Task & Habit Tracker</h1>
+        <p>Manage your tasks and build lasting habits with analytics and custom rules</p>
+      </div>
+      <button class="theme-toggle" id="themeToggle"></button>
+    </div>
+
+    <nav>
+      <a href="dashboard.html"><img src="./assets/images/layout-web-12-regular.svg" width="18"> Dashboard</a>
+      <a href="tasks.html"><img src="./assets/images/check-square-regular.svg" width="18"> Tasks</a>
+      <a href="habits.html"><img src="./assets/images/bolt-alt-regular.svg" width="18"> Habits</a>
+      <a href="rules.html" class="active"><img src="./assets/images/Icon.svg" width="18"> Rules</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="task-bar">
+      <h2>Rules</h2>
+      <div class="right-tools">
+        <div class="search-box">
+          <img src="./assets/images/search-regular.svg">
+          <input type="text" placeholder="Search" id="searchRule" />
+        </div>
+        <button class="add-task" id="addTaskBtn">
+          <img src="./assets/images/plus.svg" width="14"> Add Task
+        </button>
+      </div>
+    </div>
+
+<section class="rules-section" id="rulesList"></section>
+
+    
+
+    <section class="empty-state">
+      <img src="./assets/images/sliders.svg" alt="Empty" />
+      <p>No rules yet. Create automation rules to manage your tasks and habits</p>
+    </section>
+  </main>
+
+  <!-- ===== MODAL ===== -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Add rule</h3>
+        <button class="close-btn" id="closeModal">&times;</button>
+      </div>
+      <p class="subtitle">Build custom rules with conditions and actions</p>
+
+      <form id="ruleForm">
+        <input type="hidden" id="editIndex" value="">
+
+        <input type="text" placeholder="Rule name" required />
+        <textarea rows="3" placeholder="Description"></textarea>
+        <select class="apply-to" required>
+          <option value="">Apply to</option>
+          <option value="tasks">Tasks</option>
+          <option value="habits">Habits</option>
+        </select>
+
+        <div class="form-section">
+          <div class="section-header">
+            <span>Condition </span>
+            <select class="logic">
+              <option>AND</option>
+              <option>OR</option>
+            </select>
+          </div>
+
+          <div class="condition-group">
+            <div class="condition-row">
+              <select>
+                <option>Status</option>
+                <option>Priority</option>
+                <option>Due date</option>
+              </select>
+              <select>
+                <option>Equals</option>
+                <option>Not Equals</option>
+                <option>Greater than</option>
+                <option>Less than</option>
+                <option>Greater than or Equals</option>
+                <option>Less than or Equals</option>
+              </select>
+            
+            </div>
+          </div>
+          <a href="#" class="add-condition">+ Add condition</a>
+        </div>
+
+        <div class="form-section">
+          <div class="section-header" ><span>Action</span></div>
+          <select class="action-type">
+            <option>Show badge</option>
+             <div id="badgePreview" style="margin-top:6px; font-size:0.9rem; color:#333;"></div>
+            <option>Highlight</option>
+          </select>
+          <input type="text" placeholder="Urgent" class="action-value" />
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="cancel" id="cancelBtn">Cancel</button>
+          <button type="submit" class="submit">Submit</button>
+        </div>
+        
+      </form>
+    </div>
+  </div>
+  <div id="toast-container"></div>
+
+<!-- ===== DELETE CONFIRMATION POPUP ===== -->
+<div id="deleteConfirmModal" class="delete-popup">
+  <div class="delete-card">
+    <div class="delete-header">
+      <h3>Delete Rule</h3>
+      <img src="./assets/images/cancelI.svg" class="delete-close" width="16" alt="Close">
+    </div>
+    <p id="deleteRuleTitle" class="delete-message">
+      Are you sure you want to delete this rule?
+    </p>
+    <div class="delete-actions">
+      <button id="cancelDelete" class="btn-cancel">Cancel</button>
+      <button id="confirmDelete" class="btn-delete">Delete</button>
+    </div>
+  </div>
+</div>
+
+
+
+  <script src="./assets/js/rules.js"></script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tasks | Task & Habit Tracker</title>
+  <link rel="stylesheet" href="./assets/css/tasks.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <header>
+      <div class="top-header">
+        <div>
+          <h1>Task & Habit Tracker</h1>
+          <p>Manage your tasks and build lasting habits with analytics and custom rules</p>
+        </div>
+        <button class="theme-toggle" id="themeToggle"></button>
+      </div>
+
+      <nav>
+        <a href="dashboard.html"><img src="./assets/images/layout-web-12-regular.svg" width="20%"> Dashboard</a>
+        <a href="tasks.html" class="active"><img src="./assets/images/check-square-regular.svg" width="20%"> Tasks</a>
+        <a href="habits.html"><img src="./assets/images/bolt-alt-regular.svg" width="20%"> Habits</a>
+        <a href="rules.html"><img src="./assets/images/Icon.svg" width="20%"> Rules</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- FILTER CARD -->
+      <div class="filter-card">
+        <div class="filters">
+          <div class="filter-group">
+            <label><img src="./assets/images/filter.svg"> Filters:</label>
+            <select>
+              <option>All Status</option>
+              <option>Todo</option>
+              <option>In progress</option>
+              <option>On hold</option>
+              <option>Completed</option>
+            </select>
+            <select>
+              <option>All Priority</option>
+              <option>High</option>
+              <option>Medium</option>
+              <option>Low</option>
+            </select>
+            <p style="color: #54BD95; font-size: small; cursor: pointer;">Clear Fliter</p>
+          </div>
+          <div class="sort-group">
+            <label><img src="./assets/images/sort.svg"> Sort by:</label>
+            <select>
+              <option>Created at</option>
+              <option>Due date</option>
+              <option>Priority</option>
+            </select>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- TASK BAR -->
+      <div class="task-bar">
+        <h3>Tasks</h3>
+        <div class="task-actions">
+
+          <div class="search-box">
+            <img src="./assets/images/search-regular.svg">
+            <input type="text" id="taskSearch" placeholder="Search">
+
+          </div>
+          <button class="add-task" id="openModal"><i class="fa fa-plus"></i> Add Task</button>
+        </div>
+      </div>
+
+      <!-- TASKS LIST -->
+      <section class="task-list" id="taskList">
+        <button class="btn-delete">
+          <img src="./assets/images/trash-regular.svg" alt="Delete">
+        </button>
+
+        <div class="empty-state">
+          <img src="./assets/images/clipboard-list-regular.svg">
+          <p>No tasks found. Create your first task to get started!</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ADD TASK MODAL -->
+  <div class="modal" id="addTaskModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div>
+          <h2>Add task</h2>
+          <p class="subtext">Add a new task with details, priority, and due date.</p>
+        </div>
+        <button class="close-modal" id="closeModal">&times;</button>
+      </div>
+
+<form id="taskForm">
+  <div class="input-wrapper">
+    <input type="text" id="taskTitle" required>
+    <label for="taskTitle" class="floating-label">Task Title *</label>
+  </div>
+
+  <div class="input-wrapper">
+    <textarea id="taskDesc"></textarea>
+    <label for="taskDesc" class="floating-label">Description</label>
+  </div>
+
+  <div class="input-wrapper">
+    <input type="date" id="taskDate" required>
+    <label for="taskDate" class="floating-label">Due Date *</label>
+  </div>
+
+  <div class="input-wrapper">
+    <select id="taskPriority" required>
+      <option value="" disabled selected></option>
+      <option>High</option>
+      <option>Medium</option>
+      <option>Low</option>
+    </select>
+    <label for="taskPriority" class="floating-label">Priority *</label>
+  </div>
+
+  <div class="input-wrapper">
+    <select id="taskStatus" required>
+      <option value="" disabled selected></option>
+      <option>Todo</option>
+      <option>In progress</option>
+      <option>On hold</option>
+      <option>Completed</option>
+    </select>
+    <label for="taskStatus" class="floating-label">Status *</label>
+  </div>
+
+  <div class="modal-buttons">
+    <button type="button" class="cancel-btn" id="cancelModal">Cancel</button>
+    <button type="submit" class="submit-btn">Submit</button>
+  </div>
+</form>
+
+    </div>
+  </div>
+  <div id="deleteConfirmModal" class="delete-modal">
+    <div class="delete-modal-content">
+      <span class="delete-close">&times;</span>
+      <h3>Confirm Delete</h3>
+      <p>Are you sure you want to delete "<span id="deleteTaskTitle"></span>"?</p>
+      <div class="delete-actions">
+        <button id="cancelDelete" class="btn-cancel">Cancel</button>
+        <button id="confirmDelete" class="btn-delete-confirm">Delete</button>
+      </div>
+    </div>
+
+
+  <script src="./assets/js/tasks.js"></script>
+</body>
+
+</html>

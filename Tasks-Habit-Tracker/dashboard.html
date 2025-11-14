@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task & Habit Tracker</title>
+  <link rel="stylesheet" href="./assets/css/dashboard.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="header-left">
+      <h1>Task & Habit Tracker</h1>
+      <p>Manage your tasks and build lasting habits with analytics and custom rules</p>
+    </div>
+    <div class="header-right" id="themeToggle">
+  <img src="./assets/images/dark.svg" alt="Theme Icon" id="themeIcon" width="15px">
+</div>
+
+  </header>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav>
+        <a href="dashboard.html" class="active"><img src="./assets/images/layout-web-12-regular.svg"> Dashboard</a>
+        <a href="tasks.html" ><img src="./assets/images/check-square-regular.svg">Tasks</a>
+        <a href="habits.html"><img src="./assets/images/bolt-alt-regular.svg"> Habits</a>
+        <a href="rules.html"><img src="./assets/images/Icon.svg"> Rules</a>
+  </nav>
+
+  <!-- ===== DASHBOARD CARDS ===== -->
+  <section class="cards" >
+    <div class="card">
+      <div class="icon"><img src="./assets/images/completed.svg"></div>
+      <h2>Completed tasks</h2>
+      <h1>1</h1> 
+      <p>In the last 7 Days</p>
+    </div>
+
+    <div class="card">
+      <div class="icon"><img src="./assets/images/over.svg"></div>
+      <h2>Overdue tasks</h2>
+      <h1>1</h1>
+      <p>Total overdue</p>
+    </div>
+
+    <div class="card">
+      <div class="icon"><img src="./assets/images/bluee.svg"></div>
+      <h2>Active habits</h2>
+      <h1>3</h1>
+      <p>Now active</p>
+    </div>
+
+    <div class="card">
+      <div class="icon"><img src="./assets/images/fire.svg"></div>
+      <h2>Longest Streak</h2>
+      <h1>0</h1>
+      <p>All-time record</p>
+    </div>
+  </section>
+
+  <!-- ===== CHARTS SECTION ===== -->
+  <section class="charts">
+    <div class="chart-box">
+      <h3>Status Overview</h3>
+      <p>Get a snapshot of the status of your work items.</p>
+      <canvas id="statusChart"></canvas>
+    </div>
+
+    <div class="chart-box">
+      <h3>Habit Completion Trend</h3>
+      <p>Track your daily habit completion over the past week.</p>
+      <canvas id="habitChart"></canvas>
+    </div>
+  </section>
+
+  <script src="./assets/js/dashboard.js"></script>
+</body>
+</html>

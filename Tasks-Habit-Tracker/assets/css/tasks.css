@@ -1,0 +1,1498 @@
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Quicksand:wght@400;600&display=swap');
+
+/* ===== GLOBAL FONT RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+  /* default font */
+}
+
+
+/* ===== HEADINGS ===== */
+h1 {
+  font-family: "Quicksand", sans-serif;
+  font-style: normal;
+  line-height: 36px;
+    font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  /* 150% */
+}
+
+h2 {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 500;
+}
+
+h3,
+p,
+span,
+button,
+input,
+select,
+textarea {
+  font-family: "Open Sans", sans-serif;
+}
+
+/* ===== VARIABLES ===== */
+:root {
+  --bg: #ffffff;
+  --text: #1a1a1a;
+  --card: #ffffff;
+  --border: #e5e5e5;
+  --input-bg: #f9f9f9;
+  --green: #54bd95;
+  --overlay: rgba(0, 0, 0, 0.4);
+}
+
+.dark {
+  --bg: #1e1e1e;
+  --text: #f1f1f1;
+  --card: #2a2a2a;
+  --border: #333;
+  --input-bg: #333;
+}
+
+/* ===== BODY ===== */
+body {
+  background: var(--bg);
+  color: var(--text);
+  padding: 25px;
+
+}
+
+/* ===== HEADER ===== */
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.top-header h1 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.top-header p {
+  font-size: 13px;
+  color: gray;
+  margin-bottom: 6px;
+}
+
+/* ===== THEME TOGGLE ===== */
+.theme-toggle {
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 8px; /* slightly smaller */
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+
+.theme-toggle #themeToggle {
+  width: 20px;
+  height: 20px;
+  border: #555;
+} 
+
+/* ===== NAV ===== */
+nav {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-bottom: 15px;
+  padding-bottom: 2px;
+  position: relative;
+}
+
+nav a {
+  text-decoration: none;
+  color: #666;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  padding-bottom: 5px; /* align perfectly with border */
+  transition: color 0.3s ease;
+}
+
+nav a img {
+  width: 15px;
+  height: 15px;
+  transition: filter 0.3s ease;
+}
+
+/* ===== Active Link ===== */
+nav a.active {
+  color: #54BD95;
+  font-weight: 600;
+}
+/* Make nav icon turn green when active */
+nav a.active img {
+  filter: brightness(0) saturate(100%) invert(52%) sepia(83%) saturate(495%) hue-rotate(100deg) brightness(95%) contrast(90%);
+}
+
+/* ✅ Green underline perfectly touches bottom border */
+nav a.active::after {
+  content: "";
+  position: absolute;
+  bottom: -8%;
+  /* sits directly on nav’s bottom border */
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #54BD95;
+  border-radius: 1px;
+}
+
+/* ===== Hover ===== */
+nav a:hover {
+  color: #16a34a;
+}
+
+/* ===== 🌙 Dark Mode ===== */
+body.dark nav {
+  border-bottom: 1px solid #333;
+}
+
+body.dark nav a {
+  color: #ccc;
+}
+
+body.dark nav a.active {
+  color: #54BD95;
+}
+
+body.dark nav a img {
+  filter: brightness(0) invert(1);
+}
+body.dark nav a.active img {
+  filter: brightness(0) saturate(100%) invert(52%) sepia(83%) saturate(495%) hue-rotate(100deg) brightness(95%) contrast(90%);
+}
+/* ===== FILTER CARD ===== */
+.filter-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 12px 16px; /* compact */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  margin-bottom: 0.8rem; /* less space below */
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.filter-group,
+.sort-group {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap; /* wrap on small screens */
+}
+
+/* ===== SELECT BOXES ===== */
+.filter-group select,
+.sort-group select {
+  position: relative;
+  appearance: none;
+  padding: 8px 36px 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%23666' height='10' width='10' xmlns='http://www.w3.org/2000/svg'><path d='M0 0 L5 5 L10 0 Z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 10px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+}
+
+.filter-group select:hover,
+.sort-group select:hover {
+  border-color: #00b67a;
+}
+/* ===== DARK MODE: Change arrow color ===== */
+body.dark .filter-group select,
+body.dark .sort-group select {
+ color: white;
+}  
+/* ===== HOVER EFFECT ===== */
+.filter-group select:hover,
+.sort-group select:hover {
+  border-color: #00b67a;
+}
+/* ===== RESPONSIVE FILTER CARD ===== */
+@media (max-width: 768px) {
+  .filters {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.7rem;
+  }
+
+  .filter-group,
+  .sort-group {
+    width: 100%;
+    gap: 0.5rem;
+  }
+
+  .filter-group select,
+  .sort-group select {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .filter-card {
+    padding: 10px 12px;
+    margin-bottom: 0.6rem;
+  }
+
+  .filter-group select,
+  .sort-group select {
+    font-size: 13px;
+    padding: 6px 32px 6px 10px;
+  }
+}
+
+/* TASK BAR */
+.task-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+margin: 0.8rem 0 1.2rem; /* reduced top and bottom */
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+h3    {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+/* SEARCH + ADD BUTTON */
+.task-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  padding: 8px 12px;
+  background: #fff;
+  width: 220px;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  width: 100%;
+  margin-left: 6px;
+  font-size: 14px;
+}
+
+.add-task {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #54BD95;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.add-task:hover {
+  background: #128a3e;
+}
+/* Make first option gray like a label */
+#taskPriority option:first-child,
+#taskStatus option:first-child {
+  color: #999;
+}
+#taskStatus {
+  color: gray;
+}
+#taskPriority {
+  color: gray;
+}
+/* Normal text color after selection */
+#taskPriority:valid,
+#taskStatus:valid {
+  color: #000;
+}
+
+/* Date input text gray before picking a date */
+#taskDate::-webkit-datetime-edit {
+  color: #999;
+}
+#taskDate:focus::-webkit-datetime-edit {
+  color: gray;
+}
+/* General styling for select */
+#taskPriority,
+#taskStatus {
+  appearance: none;       /* Remove default arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 8px 36px 8px 12px; /* space for custom arrow */
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
+  font-size: 14px;
+  color: gray;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%23666' height='10' width='10' xmlns='http://www.w3.org/2000/svg'><path d='M0 0 L5 5 L10 0 Z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 20px center; /* arrow neatly inside the field */
+  background-size: 10px;
+}
+
+/* First option looks like a placeholder */
+#taskPriority option:first-child,
+#taskStatus option:first-child {
+  color: #999;
+}
+.input-wrapper {
+  position: relative;
+  margin-bottom: 1.2rem;
+  width: 100%;
+}
+
+/* Base styling for inputs, textarea, select */
+.input-wrapper input,
+.input-wrapper textarea,
+.input-wrapper select {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+  outline: none;
+  appearance: none; /* remove default select arrow */
+}
+
+/* Hide placeholder for select */
+.input-wrapper select option:first-child {
+  color: transparent;
+}
+
+/* Floating label */
+.floating-label {
+  position: absolute;
+  top: 12px;        /* start inside the input at top-left */
+  left: 12px;       /* left corner */
+  font-size: 14px;
+  color: #999;
+  pointer-events: none;
+  transition: all 0.2s ease;
+  background: #fff;
+  padding: 0 4px;
+}
+
+/* Move label on focus or when input has value */
+.input-wrapper input:focus + .floating-label,
+.input-wrapper input:not(:placeholder-shown) + .floating-label,
+.input-wrapper textarea:focus + .floating-label,
+.input-wrapper textarea:not(:placeholder-shown) + .floating-label,
+.input-wrapper select:focus + .floating-label,
+.input-wrapper select:valid + .floating-label {
+  top: -8px;         /* moves up above the field */
+  left: 8px;         /* stays at left corner */
+  font-size: 12px;   /* smaller font */
+  color: gray;    /* highlight color */
+}
+
+/* Normal text color after selecting a value */
+#taskPriority:valid,
+#taskStatus:valid {
+  color: #000;
+}
+
+/* Hover/focus effect */
+#taskPriority:focus,
+#taskStatus:focus {
+
+  outline: none;
+}
+
+
+/* EMPTY STATE */
+.empty-state {
+  text-align: center;
+  margin-top: 70px; /* smaller */
+  color: #777;
+}
+/* === MODAL === */
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.25);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal.show { display: flex; }
+
+.modal-content {
+  background: #fff;
+  border-radius: 12px;
+  padding: 15px;
+  width: 420px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.modal-header h2 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.modal-header .subtext {
+  color: #999;
+  font-size: 0.85rem;
+}
+
+.close-modal {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  color: #777;
+  cursor: pointer;
+}
+
+/* ================================
+   DARK MODE FOR MODAL
+================================ */
+body.dark .modal {
+  background: rgba(0, 0, 0, 0.45); /* darker backdrop */
+}
+
+body.dark .modal-content {
+  background: #1e1e1e;
+  color: black;
+  border: 1px solid #333;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
+
+body.dark .modal-header h2 {
+  color: #fff;
+}
+
+body.dark .modal-header .subtext {
+  color: #aaa;
+}
+
+body.dark .close-modal {
+  color: #bbb;
+}
+
+body.dark #taskForm input,
+body.dark #taskForm textarea,
+body.dark #taskForm select {
+  background: #2a2a2a;
+  border: 1px solid #444;
+  color: #e5e5e5;
+}
+
+body.dark #taskForm input::placeholder,
+body.dark #taskForm textarea::placeholder {
+  color: #888;
+}
+
+body.dark #taskForm input:focus,
+body.dark #taskForm textarea:focus,
+body.dark #taskForm select:focus {
+  box-shadow: 0 0 3px rgba(84, 189, 149, 0.45);
+  border-color: #54BD95;
+  color: #fff;
+}
+
+body.dark .cancel-btn {
+  background: #2a2a2a;
+  color: #ddd;
+  border: 1px solid #444;
+}
+
+body.dark .cancel-btn:hover {
+  background: #333;
+}
+
+body.dark .submit-btn {
+  background: #54BD95;
+  color: #fff;
+}
+
+body.dark .submit-btn:hover {
+  background: #3c9e7c;
+}
+
+
+
+/* FORM STYLING */
+#taskForm {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 1rem;
+}
+
+#taskForm input,
+#taskForm textarea,
+#taskForm select {
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+  width: 100%;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+#taskForm input:focus,
+#taskForm textarea:focus,
+#taskForm select:focus {
+  box-shadow: 0 0 3px rgba(232, 97, 73, 0.3);
+  color: #000;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 1rem;
+}
+
+.cancel-btn {
+  border: 1px solid #ccc;
+  background: #fff;
+  color: #555;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cancel-btn:hover {
+  background: #f3f3f3;
+}
+
+.submit-btn {
+  background: #54BD95;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 16px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background: #128a3e;
+}
+
+/* === TASK CARD === */
+.task-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 18px;
+margin-bottom: 10px; /* smaller gap */
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+.task-card h4 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.task-card p {
+  color: #777;
+  margin: 6px 0 12px;
+  font-size: smaller;
+}
+
+.task-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.priority-pill {
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  color: #fff;
+  font-weight: 500;
+}
+
+.priority-high { background: #e53935; }
+.priority-medium { background: #fbc02d; color: #333; }
+.priority-low { background: #54bd54; }
+
+.task-meta select {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+/* DARK MODE */
+body.dark {
+  background: #121212;
+  color: #f5f5f5;
+}
+
+body.dark header h1,
+body.dark header p,
+body.dark nav a {
+  color: #f5f5f5;
+}
+
+body.dark nav {
+  border-bottom-color: #333;
+}
+
+body.dark .filter-card {
+  background: #1e1e1e;
+  border-color: #333;
+}
+
+body.dark select,
+body.dark input,
+body.dark textarea {
+  background: #2b2b2b;
+  color: #fff;
+  border-color: #444;
+}
+
+body.dark .search-box {
+  background: #2b2b2b;
+  border-color: #444;
+}
+
+body.dark .modal-content {
+  background: rgba(30, 30, 30, 0.9);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark .cancel-btn {
+  border-color: #444;
+  color: #aaa;
+}
+
+body.dark .cancel-btn:hover {
+  background: #333;
+}
+
+/* --- placement & visual for new advanced card layout --- */
+.task-card {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-bottom: 12px;
+}
+
+/* left: drag handle + main content */
+.card-left {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  flex: 1;
+}
+.card-right {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 46px;
+}
+/* drag handle */
+.drag-handle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #bbb;
+  padding-top: 4px;
+  cursor: grab;
+}
+.drag-handle i { font-size: 16px; }
+
+/* main content */
+.card-main { flex: 1; }
+
+.title-row { display:flex; align-items:center; gap:8px; }
+.task-title { margin: 0; font-size: 15px; font-weight: 600; color: #111; }
+
+.task-desc { margin: 6px 0 10px; color: #666; font-size: 13px; }
+
+/* info row: priority + date */
+.task-info { display:flex; gap:8px; align-items:center; margin-bottom:10px; }
+
+.priority-pill {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  display:inline-block;
+}
+
+/* priorities */
+.priority-high { background: #D4183D; }
+.priority-medium { background: #D78905; color: #fdfbfb;}
+.priority-low { background: #3B82F6; }
+
+/* due */
+.due-pill {
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background: #f6f6f6;
+  color: #555;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+/* status section */
+.task-status { display:flex; align-items:center; gap:10px; margin-bottom:6px; }
+.task-status .status-label { color:#555; font-size:13px; }
+.status-dropdown { padding:6px 8px; border-radius:6px; border:1px solid #ddd; }
+
+/* subtasks */
+.subtask-section { color:#666; font-size:13px; display:flex; align-items:center; gap:6px; cursor:pointer; }
+
+/* ============================================================
+   RIGHT ICONS LAYOUT
+============================================================ */
+.card-right {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 46px;
+}
+
+/* ============================================================
+   SMALL ICON BUTTONS
+============================================================ */
+.btn-icon {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  transition: background 0.12s, transform 0.12s;
+}
+
+.btn-icon i {
+  font-size: 14px;
+  filter: none;
+}
+
+.btn-icon:hover {
+  transform: scale(1.06);
+}
+
+/* edit/delete button colors */
+.btn-edit i { color: #54BD95; }
+.btn-delete i { color: #FB2C36; }
+
+/* ============================================================
+   MOVE UP / MOVE DOWN IMAGE ICONS (YOUR REQUEST)
+============================================================ */
+/* Default for light mode → BLACK */
+.btn-move-up,
+.btn-move-down {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  filter: brightness(0);       /* pure black */
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+/* Hover */
+.btn-move-up:hover,
+.btn-move-down:hover {
+  transform: scale(1.1);
+}
+
+/* Dark mode → WHITE */
+body.dark .btn-move-up,
+body.dark .btn-move-down {
+  filter: brightness(0) invert(1);   /* turn icon white */
+}
+
+/* ============================================================
+   DRAGGING EFFECT
+============================================================ */
+.task-card.dragging {
+  opacity: 0.6;
+}
+
+.task-card.dragging .drag-handle {
+  cursor: grabbing;
+}
+
+/* ============================================================
+   CARD ACTIONS
+============================================================ */
+.card-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.card-actions img {
+  filter: none !important;
+}
+
+/* ============================================================
+   DARK MODE CARD COLORS
+============================================================ */
+body.dark .task-card {
+  background: #1e1e1e;
+  border-color: #333;
+}
+
+body.dark .task-left p {
+  color: #bbb;
+}
+
+body.dark .due-pill {
+  background: #2a2a2a;
+  color: #ccc;
+}
+/* LIGHT MODE → pure black */
+.btn-move-up,
+.btn-move-down {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  filter: brightness(0) contrast(200%);  /* <-- added contrast */
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+/* DARK MODE → pure white */
+body.dark .btn-move-up,
+body.dark .btn-move-down {
+  filter: brightness(0) invert(1) contrast(200%); /* <-- stronger white */
+}
+
+
+/* Adjust status dropdown arrow */
+.status-dropdown {
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%23666' height='10' width='10' xmlns='http://www.w3.org/2000/svg'><path d='M0 0 L5 5 L10 0 Z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 10px;
+  padding-right: 30px;
+}
+
+/* Completed tasks - only strike through the title */
+.task-completed {
+  background: #e8f9f0;
+  opacity: 0.95;
+  border-left: 4px solid #00b67a;
+}
+
+.task-completed .task-title {
+  text-decoration: line-through;
+  color: #00b67a;
+}
+
+/* --- SUBTASK STYLING --- */
+.subtask-section {
+  margin-top: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #333;
+}
+
+.subtask-container {
+  margin-top: 8px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 10px 12px;
+  border: 1px solid #e2e2e2;
+}
+
+.subtask-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.subtask-input {
+  flex: 1;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.subtask-add-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: #54BD95;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background 0.2s;
+}
+.subtask-add-btn:hover {
+  background: #128a3e;
+}
+
+.subtask-list {
+  list-style: none;
+  margin-top: 8px;
+}
+
+.subtask-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 6px 10px;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.subtask-check {
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+.subtask-text {
+  flex: 1;
+}
+
+.subtask-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.subtask-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.subtask-add-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 4px;
+  transition: transform 0.2s ease;
+}
+
+.subtask-add-btn {
+  background-color: #54BD95;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+.completed-task {
+  text-decoration: line-through;
+  opacity: 0.6;
+  color: #888;
+  transition: all 0.3s ease;
+}
+.no-task-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70vh; /* centers vertically within main area */
+  text-align: center;
+  color: #777;
+}
+
+.no-task-found img {
+  opacity: 0.3;
+  margin-bottom: 12px;
+}
+
+.no-task-found p {
+  font-size: 1rem;
+  color: #555;
+}
+#toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ===== TOAST STYLES ===== */
+.toast-success {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #E1F2EB;
+  color: #000;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 9999;
+  height: 46px;
+  width: 345px;
+  padding-right: 12px;
+}
+
+.toast-success.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast-icon {
+  width: 44px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px 0 0 6px;
+  background: #54BD95;
+  color: white;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.toast-msg {
+  flex: 1;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.toast-close {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.toast-close:hover {
+  opacity: 1;
+}
+
+/* ===== DELETE CONFIRMATION MODAL ===== */
+.delete-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  transition: opacity 0.3s ease;
+}
+
+.delete-content {
+  background: #fff;
+  width: 360px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  animation: popIn 0.2s ease;
+  display: flex;
+  flex-direction: column; /* stack header, message, footer vertically */
+}
+
+@keyframes popIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Header */
+.delete-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.2rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.delete-header h3 {
+  font-size: 18px;
+  margin: 0;
+  text-align: left; /* align title text to start */
+}
+
+.delete-close {
+  cursor: pointer;
+  font-size: 22px;
+  color: #666;
+}
+
+.delete-close:hover {
+  color: #000;
+}
+
+/* Message */
+.delete-message {
+  padding: 18px;
+  font-size: 15px;
+  color: #333;
+  text-align: left; /* align text to start */
+  border-top: 1px solid #ddd; /* top border */
+  border-bottom: 1px solid #ddd; /* bottom border */
+}
+
+/* Footer */
+.delete-footer {
+  display: flex;
+  justify-content: flex-end; /* align buttons to the end */
+  gap: 12px; /* spacing between buttons */
+  padding: 12px 18px 16px;
+}
+
+.delete-footer button {
+  font-size: 14px;
+  padding: 6px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-cancel {
+  border: 1.5px solid #54BD95;
+  background: transparent;
+  color: #4caf50;
+}
+
+.btn-cancel:hover {
+  background: #e8f5e9;
+}
+
+.btn-delete-confirm {
+  background: #54BD95;
+  color: #fff;
+  border: none;
+}
+
+.btn-delete-confirm:hover {
+  background: #43a047;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0.5rem 1rem 1rem;
+  }
+
+  .filter-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .task-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .top-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .add-task {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .filter-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav {
+    gap: 0.6rem;
+  }
+
+  body {
+    padding: 0.5rem;
+  }
+}
+
+/* ===== BADGE STYLES FOR RULE-BASED TASK BADGES ===== */
+
+.task-badge {
+  background-color: #ECEEF2;
+  color: #000;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 6px;
+  border-radius: 6px;
+  margin-left: 6px;
+  display: inline-block;
+}
+
+.delete-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.delete-modal-content {
+  background: var(--card-bg, #fff);
+  padding: 20px 25px;
+  border-radius: 12px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  position: relative;
+}
+.delete-close {
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+.delete-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+.btn-cancel {
+  width: 70px;
+  border-radius: 10%;
+  border: 1.5px solid #28a745;
+  background: transparent;
+  color: #28a745;
+}
+.btn-delete-confirm {
+  background: #54BD95;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.btn-delete-confirm:hover {
+  background: #5dc02b;
+}
+
+
+/* === DARK MODE TEXT FIXES === */
+body.dark {
+  color: #f5f5f5;
+}
+
+/* General text colors */
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4,
+body.dark p,
+body.dark span,
+body.dark label,
+body.dark button,
+body.dark input,
+body.dark textarea,
+body.dark select {
+  color: #f5f5f5;
+}
+
+/* Task titles and descriptions */
+body.dark .task-title {
+  color: #e0e0e0;
+}
+
+body.dark .task-desc {
+  color: #bbb;
+}
+
+/* Priority pills */
+body.dark .priority-high { background: #D4183D; color: #fff; }
+body.dark .priority-medium { background: #D78905; color: #fff; }
+body.dark .priority-low { background: #3B82F6; color: #fff; }
+
+/* Due date pill */
+body.dark .due-pill {
+  background: #2a2a2a;
+  color: #ccc;
+}
+
+/* Subtasks */
+body.dark .subtask-section,
+body.dark .subtask-item,
+body.dark .subtask-text {
+  color: #ddd;
+}
+
+body.dark .subtask-container {
+  background: #1b1b1b;
+  border-color: #333;
+}
+
+/* Task badge */
+body.dark .task-badge {
+  background-color: #333;
+  color: #f5f5f5;
+}
+
+/* Toast message */
+body.dark .toast-success {
+  background-color: #1b1b1b;
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+}
+
+body.dark .toast-icon {
+  background: #16a34a;
+  color: #fff;
+}
+
+/* Delete confirmation modal */
+body.dark .delete-content,
+body.dark .delete-modal-content {
+  background: #1e1e1e;
+  color: #f5f5f5;
+  border-color: #333;
+}
+
+body.dark .delete-message {
+  color: #ccc;
+}
+
+body.dark .delete-close {
+  color: #aaa;
+}
+
+body.dark .delete-close:hover {
+  color: #fff;
+}
+
+body.dark .btn-cancel {
+  border-color: #16a34a;
+  color: #54BD95;
+}
+
+body.dark .btn-cancel:hover {
+  background: rgba(22, 163, 74, 0.15);
+}
+
+body.dark .btn-delete-confirm {
+  background: #16a34a;
+  color: #fff;
+}
+
+/* Filter & nav links */
+body.dark nav a:hover {
+  color: #16a34a;
+}
+
+/* Inputs, dropdowns, and cards */
+body.dark select,
+body.dark input,
+body.dark textarea {
+  background: #2b2b2b;
+  border-color: #444;
+  color: #fff;
+}
+
+body.dark .task-card {
+  background: #1e1e1e;
+  color: #f5f5f5;
+  border-color: #333;
+}
+
+/* Empty state text */
+body.dark .empty-state,
+body.dark .no-task-found p {
+  color: #aaa;
+}
+
+/* Icon hover filters in dark mode */
+body.dark .card-actions img {
+  filter: brightness(0) invert(1);
+}
+
+body.dark .icon-img:hover {
+  transform: scale(1.1);
+}
+

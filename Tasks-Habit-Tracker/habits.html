@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Habits | Task & Habit Tracker</title>
+  <link rel="stylesheet" href="./assets/css/habits.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <header>
+    <div class="top-header">
+      <div>
+        <h1>Task & Habit Tracker</h1>
+        <p>Manage your tasks and build lasting habits with analytics and custom rules</p>
+      </div>
+      <button class="theme-toggle" id="themeToggle"></button>
+    </div>
+
+    <nav>
+      <a href="dashboard.html"><img src="./assets/images/layout-web-12-regular.svg"> Dashboard</a>
+      <a href="tasks.html"><img src="./assets/images/check-square-regular.svg"> Tasks</a>
+      <a href="habits.html" class="active"><img src="./assets/images/bolt-alt-regular.svg"> Habits</a>
+      <a href="rules.html"><img src="./assets/images/Icon.svg"> Rules</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="filter-card">
+      <div class="filter-left">
+        <label><img src="./assets/images/filter.svg"> Frequency:</label>
+        <select id="filterFrequency">
+          <option>All Frequency</option>
+          <option>Daily</option>
+          <option>Weekly</option>
+          <option>Custom</option>
+        </select>
+        <p style="color: #54BD95; font-size: small; cursor: pointer;">Clear Fliter</p>
+      </div>
+
+      <div class="filter-right">
+        <label><img src="./assets/images/sort.svg"> Sort by:</label>
+        <select id="sortBy">
+          <option>Streak</option>
+          <option>Created at</option>
+          <option>Ascending</option>
+          <option>Descending</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="task-bar">
+      <h2>Habits</h2>
+      <div class="right-tools">
+        <div class="search-box">
+        <img src="./assets/images/search-regular.svg">
+          <input type="text" id="searchInput" placeholder="Search">
+        </div>
+        <button class="add-task" id="addHabitBtn">
+          <i class="fa-solid fa-plus"></i> Add Habit
+        </button>
+      </div>
+    </div>
+
+    <section id="habitList"></section>
+
+    <section class="empty-state" id="emptyState">
+      <img src="./assets/images/fire-regular.svg" alt="fire icon">
+      <p>No habits yet. Create your first habit to get started!</p>
+    </section>
+  </main>
+
+  <!-- ===== ADD HABIT MODAL ===== -->
+  <div class="modal-overlay" id="habitModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <h3>Add New Habit</h3>
+          <p class="subtext">Create a new habit to track daily, weekly, or on custom days.</p>
+        </div>
+        <button class="close-icon" id="closeIcon">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form id="habitForm">
+        <div class="form-group">
+          <input type="text" id="habitName" placeholder="Habit name" required>
+        </div>
+
+        <div class="form-group">
+          <textarea id="habitDescription" placeholder="Enter detailed description"></textarea>
+        </div>
+
+        <div class="form-group">
+          <select id="habitFrequency" required>
+            <option value="">Select frequency</option>
+            <option value="daily">Daily</option>
+            <option value="weekly">Weekly</option>
+            <option value="custom">Custom</option>
+          </select>
+        </div>
+
+        <!-- Hidden by default -->
+        <div id="chooseDayContainer" class="hidden">
+          <div id="chooseDayInput" class="choose-day-input">Choose Day</div>
+          <div id="daysDropdown" class="days-dropdown"></div>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn cancel-btn" id="closeModal">Cancel</button>
+          <button type="submit" class="btn add-btn">Add Habit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+<!-- ===== DELETE CONFIRMATION POPUP ===== -->
+<div id="deletePopup" class="delete-popup">
+  <div class="delete-card">
+    <div class="delete-header">
+      <span>Delete</span>
+      <button id="closeDeletePopup" class="close-delete">&times;</button>
+    </div>
+    <hr class="line" />
+    <div class="delete-body">
+      <p id="deleteMessage">Are you sure you want to delete this habit?</p>
+    </div>
+    <hr class="line" />
+    <div class="delete-actions">
+      <button id="cancelDeleteBtn" class="btn-cancel">Cancel</button>
+      <button id="confirmDeleteBtn" class="btn-delete">Delete</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast Notification -->
+<div id="toast" class="toast">
+  <div class="toast-icon">✔</div>
+  <div class="toast-message">All set! Your changes have been saved successfully!</div>
+  <div class="toast-close">&times;</div>
+</div>
+
+
+  <script src="./assets/js/habits.js"></script>
+</body>
+</html>
